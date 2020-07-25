@@ -46,7 +46,7 @@ class CommonPhotoManager(models.Manager):
     def get_photo_in_country(self, country):
         """Get all country photo and all photo in country"""
         return self.get_queryset().filter(
-            Q(location__country=country) | Q(content_type__model=utils.get_model_name(country), object_id=country.pk,)
+            Q(location__country=country) | Q(content_type__model=utils.get_model_name(country), object_id=country.pk),
         )
 
     def get_photo_related_models(self, instance):
@@ -82,24 +82,24 @@ class Photo(mixins.NameMixin):
         get_user_model(),
         related_name='photos',
         verbose_name=_('Author'),
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     image = models.ImageField(_('Image'), upload_to="photos/%Y/%m/%d")
     location = models.ForeignKey(
         'geo.City',
         verbose_name=_('City'),
         related_name='photos',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     created_at = models.DateTimeField(_('Created at'), default=timezone.now)
     modified_at = models.DateTimeField(_('Modified at'), auto_now=True)
-    is_approved = models.BooleanField(verbose_name=_('Approved'), default=False,)
+    is_approved = models.BooleanField(verbose_name=_('Approved'), default=False)
     content_type = models.ForeignKey(
         ContentType,
         models.CASCADE,
         verbose_name=_('Content type'),
     )
-    object_id = models.PositiveIntegerField(verbose_name=_('Object ID'), null=True,)
+    object_id = models.PositiveIntegerField(verbose_name=_('Object ID'), null=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
     objects = models.Manager()

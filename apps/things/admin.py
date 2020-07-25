@@ -15,6 +15,6 @@ class ThingInUseInLineAdmin(admin.TabularInline):
 
 @admin.register(Thing)
 class ThingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
+    list_display = ('id', 'name')
     search_fields = ('name',)
-    inlines = (ThingInCityInLineAdmin, ThingInUseInLineAdmin,)
+    inlines = (ThingInCityInLineAdmin, ThingInUseInLineAdmin)

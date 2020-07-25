@@ -6,7 +6,7 @@ from apps.common import mixins
 
 class Country(mixins.NameMixin, mixins.RelatedObjectMixin):
     code2 = models.CharField(max_length=2, null=True, blank=True, unique=True)
-    code3 = models.CharField(verbose_name='ISO3', max_length=3, null=True, blank=True, unique=True,)
+    code3 = models.CharField(verbose_name='ISO3', max_length=3, null=True, blank=True, unique=True)
     name = models.CharField(_('Name'), max_length=255, unique=True, db_index=True)
 
     class Meta:
@@ -25,7 +25,7 @@ class Country(mixins.NameMixin, mixins.RelatedObjectMixin):
 
 
 class City(mixins.NameMixin, mixins.RelatedObjectMixin):
-    country = models.ForeignKey('Country', related_name='cities', on_delete=models.CASCADE,)
+    country = models.ForeignKey('Country', related_name='cities', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'city'
