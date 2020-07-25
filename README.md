@@ -1,4 +1,7 @@
 # Network of photographers
+
+[![Build Status](https://travis-ci.org/mitrofun/network_of_photographers.svg?branch=master)](https://travis-ci.org/mitrofun/network_of_photographers)
+
 Test task. Make a small social network for photographers.
 
 We have countries, cities, things, users. Each type has a different set of fields.

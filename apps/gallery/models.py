@@ -46,8 +46,7 @@ class CommonPhotoManager(models.Manager):
     def get_photo_in_country(self, country):
         """Get all country photo and all photo in country"""
         return self.get_queryset().filter(
-            Q(location__country=country) |
-            Q(content_type__model=utils.get_model_name(country), object_id=country.pk,)
+            Q(location__country=country) | Q(content_type__model=utils.get_model_name(country), object_id=country.pk,)
         )
 
     def get_photo_related_models(self, instance):

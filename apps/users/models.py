@@ -10,6 +10,7 @@ class User(AbstractUser):
         related_name='users',
         on_delete=models.CASCADE,
         null=True,
+        blank=True,
     )
 
     REQUIRED_FIELDS = []
@@ -21,5 +22,3 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
-
-
